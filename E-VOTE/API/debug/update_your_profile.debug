@@ -1,0 +1,1 @@
+UPDATE `member` SET fname='Jameel',lname='Jameel',bio='',phone='094739947', birthdate='2000-01-13', gender_id=1, specialty_id=3, residence_region_id=5 WHERE user_id=52 

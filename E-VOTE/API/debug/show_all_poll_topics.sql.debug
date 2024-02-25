@@ -1,0 +1,23 @@
+
+      SELECT poll_topic.*,
+              CASE
+                  WHEN TIMESTAMPADD(HOUR, poll_topic.period, poll_topic.insert_time) < NOW() THEN 'yes'
+                  ELSE 'no'
+              END AS is_ended
+      FROM 
+          poll_topic
+      LEFT JOIN 
+          link_pollTopic_candidate ON poll_topic.id = link_pollTopic_candidate.poll_topic_id
+      LEFT JOIN 
+          candidate ON link_pollTopic_candidate.candidate_id = candidate.id
+      ORDER BY
+          CASE
+              WHEN candidate.lname = 'QQQ' THEN 1 
+              WHEN candidate.residence_region_id = '6' THEN 2 
+              WHEN candidate.specialty_id = '6' THEN 3 
+              WHEN candidate.gender_id = '1' THEN 4 
+              ELSE 5
+          END ASC,
+          poll_topic.id DESC;
+
+        

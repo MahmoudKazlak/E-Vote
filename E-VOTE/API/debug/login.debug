@@ -1,0 +1,1 @@
+SELECT * FROM `users` WHERE 1 AND loginname='qqq' AND password='4ef865bdb64342ff049b597cbcf62318' AND (user_level_id=2 OR user_level_id=3)

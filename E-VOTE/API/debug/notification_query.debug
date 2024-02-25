@@ -1,0 +1,5 @@
+
+SELECT pt.`id` AS poll_topic_id,pt.`name` AS poll_topic_name, lpc.`notification_num`
+FROM `poll_topic` pt
+JOIN `link_pollTopic_candidate` lpc ON pt.`id` = lpc.`poll_topic_id`
+WHERE lpc.`candidate_id` =  '' AND notification_num>0 

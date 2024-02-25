@@ -1,0 +1,1 @@
+UPDATE `link_pollTopic_candidate` SET notification_num=0 WHERE 1 AND candidate_id=17 AND poll_topic_id=6

@@ -1,0 +1,97 @@
+
+
+
+
+<?php 
+
+$chdir='../';
+require "$chdir"."class1/view/search_select_list.php";
+
+?>
+
+
+
+<script>
+$(document).ready(function(){
+	$("#div_show_select_list_all_admin_names").hide();
+});
+
+$(document).click(function(){
+	if($("#search_admin_name").val()=='')
+	{
+		list_option_selected_all_admin_names('','');
+	}
+});
+
+
+function list_option_selected_all_admin_names(option_key,option_value)//this call and from element created by ajax code
+{
+	$("#div_show_select_list_all_admin_names").hide();
+	$("#search_admin_name").val(option_value);
+	$("#search_admin_id").val(option_key);
+
+	//alert(option_value);
+
+}
+
+function call_search_function_searchadmin()
+{
+
+
+
+	var data_view_select_list={image_column:'admin_id',title_column:'admin_name',info_column:'admin_identification'};
+
+	var element_id_and_function={input_search_id:'search_admin_name',
+					div_show_list_id:'div_show_select_list_all_admin_names',
+					function_name_onclick_option_selected:'list_option_selected_all_admin_names',
+					put_option_value_column:'admin_name',
+					put_option_key_column:'admin_id'
+					};
+
+	var input_search_value=$('#search_admin_name').val();
+	//input_search_value=input_search_value.split(" ")[0];//omar:search first word
+
+	
+	var sql='SELECT admin.name as admin_name,admin.identification_number as admin_identification,admin.id as admin_id FROM admin LEFT JOIN admin_permission ON admin_permission.admin_id=admin.id   WHERE 1 AND admin.is_canceled=0 AND admin_permission.admin_id is NULL AND (admin.name LIKE "|||||'+input_search_value+'|||||" OR admin.identification_number LIKE "|||||'+input_search_value+'|||||")  LIMIT 0,5';
+	
+	
+	
+	//alert(sql);
+	
+	__SEARCH_SELECT_LIST__(sql,data_view_select_list,element_id_and_function);
+			
+
+
+
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+<div align="right" class="select_list_with_input" >
+
+	<input type="text" id="search_admin_name" name="search_admin_name" class="select_list" style="z-index:10;" onkeyup="call_search_function_searchadmin()" placeholder=" البحث عن مدير" autocomplete="off"  >
+	
+		<input type="hidden" id="search_admin_id" name="search_admin_id" value="" >
+	<br>
+	<div id="div_show_select_list_all_admin_names" class="select_list" align="right" style="z-index:10;" >
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+

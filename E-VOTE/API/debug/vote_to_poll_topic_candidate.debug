@@ -1,0 +1,1 @@
+INSERT INTO link_pollTopic_candidate_userVoted(user_id,candidate_id,poll_topic_id) VALUES(54,11,2) 

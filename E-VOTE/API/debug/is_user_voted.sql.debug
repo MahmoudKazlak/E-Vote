@@ -1,0 +1,1 @@
+; SELECT COUNT(*) FROM `link_pollTopic_candidate_userVoted` WHERE 1 AND candidate_id=1 AND poll_topic_id=2 AND user_id=54 ; SELECT COUNT(*) FROM `link_pollTopic_candidate_userVoted` WHERE 1 AND candidate_id=11 AND poll_topic_id=2 AND user_id=54 ; SELECT COUNT(*) FROM `link_pollTopic_candidate_userVoted` WHERE 1 AND candidate_id=13 AND poll_topic_id=2 AND user_id=54 

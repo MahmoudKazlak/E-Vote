@@ -1,0 +1,16 @@
+SELECT
+              lpc.id,
+              c.id as candidate_id,
+              c.user_id as candidate_user_id,
+              CONCAT(c.fname, ' ', c.lname) AS name,
+              TIMESTAMPDIFF(YEAR, c.birthdate, CURDATE()) AS age,
+              (SELECT COUNT(*) FROM `link_pollTopic_candidate_userVoted` WHERE candidate_id = c.id AND poll_topic_id = 2) AS candidate_votes_count
+            FROM
+              candidate c
+            JOIN
+              link_pollTopic_candidate lpc ON c.id = lpc.candidate_id
+            WHERE
+              lpc.poll_topic_id = 2
+              
+            ORDER BY candidate_votes_count DESC, lpc.id ASC
+          
